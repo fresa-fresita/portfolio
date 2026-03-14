@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anna Maro — AI Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f1;
+      --ink: #1a1814;
+      --muted: #7a7570;
+      --accent: #2d5a3d;
+      --accent-light: #e8efe9;
+      --rule: #d8d4ce;
+      --card: #ffffff;
+      --mono: 'DM Mono', monospace;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section { padding: 72px 0; border-top: 1px solid var(--rule); }
+    section:first-of-type { border-top: none; }
+
+    /* ── HEADER ── */
+    header {
+      padding: 80px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(52px, 9vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .header-tagline {
+      margin-top: 28px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.65;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    /* ── CONTACT ── */
+    .contact-bar {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .contact-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-bar a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .contact-bar .icon {
+      width: 14px; height: 14px;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .about-text strong {
+      font-weight: 600;
+    }
+
+    /* ── COMPETENCIES ── */
+    .competencies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+
+    .competency {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+
+    .competency h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .competency p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .skill-group h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      padding: 4px 12px;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      background: var(--card);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-list { display: flex; flex-direction: column; gap: 52px; }
+
+    .exp-item {}
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .exp-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .exp-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-bullets li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+      font-size: 12px;
+      top: 2px;
+    }
+
+    /* ── EDUCATION ── */
+    .education-row {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .edu-divider {
+      width: 1px; background: var(--rule);
+      height: 14px; align-self: center; flex-shrink: 0;
+    }
+
+    .education-list { display: flex; flex-direction: column; gap: 18px; }
+
+    /* ── RECOMMENDATIONS ── */
+    .rec-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .rec-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 36px 40px;
+      position: relative;
+    }
+
+    .rec-card::before {
+      content: '\201C';
+      font-family: var(--serif);
+      font-size: 72px;
+      color: var(--accent-light);
+      position: absolute;
+      top: 12px;
+      left: 32px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .rec-text {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 24px;
+      padding-top: 18px;
+    }
+
+    .rec-author {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+
+    .rec-name {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .rec-role {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .rec-card { padding: 28px 24px; }
+      .rec-card::before { left: 18px; }
+      .exp-header { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <p class="header-eyebrow">AI Product Manager &nbsp;·&nbsp; Conversational AI &amp; Intelligent Automation</p>
+      <h1>Anna<br><em>Maro</em></h1>
+      <p class="header-tagline">11+ years designing multi-agent conversation systems and shipping LLM-powered products at scale — bridging the gap between "technically impressive" and "actually useful."</p>
+      <div class="contact-bar">
+        <a href="mailto:anna.maro.dm@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          anna.maro.dm@gmail.com
+        </a>
+        <a href="tel:+16282339072">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          +1 (628) 233-9072
+        </a>
+        <a href="https://www.linkedin.com/in/annamaro/" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/annamaro
+        </a>
+        <a href="#" aria-label="Location">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          San Francisco, CA &amp; Chicago, IL
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label reveal">About</p>
+      <p class="about-text reveal">
+        I've spent my career asking one question: <strong>how do you turn a technically impressive system into something people actually want to use?</strong> That's taken me from scaling B2B platforms at Sony Music to voice games at Volley, to production generative AI at Augmedix and Rely Health. My product instincts came before AI — and they remain the lens for every decision I make.
+      </p>
+      <div class="competencies reveal">
+        <div class="competency">
+          <h4>User-Focused</h4>
+          <p>I build for the person on the other end of the conversation, not the demo. Fast execution matters, but only if it works when real people use it.</p>
+        </div>
+        <div class="competency">
+          <h4>Quality at Speed</h4>
+          <p>Iterative excellence: get it out, learn fast, make it better. The best product decisions come from what users do, not what they say in a meeting.</p>
+        </div>
+        <div class="competency">
+          <h4>Accessible by Design</h4>
+          <p>AI should feel effortless regardless of technical literacy. I design systems that handle complexity under the hood so users never have to think about it.</p>
+        </div>
+        <div class="competency">
+          <h4>Action-Oriented</h4>
+          <p>I don't wait for perfect information. I ship, measure, iterate — because waiting for certainty is just another way of not deciding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label reveal">Technical Expertise</p>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <h4>AI / ML</h4>
+          <div class="skill-tags">
+            <span class="tag">LLMs</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Multi-Agent Systems</span>
+            <span class="tag">Voice AI</span>
+            <span class="tag">NLP</span>
+            <span class="tag">ASR / TTS</span>
+            <span class="tag">Model Evaluation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Tools &amp; Platforms</h4>
+          <div class="skill-tags">
+            <span class="tag">Linear</span>
+            <span class="tag">Jira</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Vellum</span>
+            <span class="tag">Retell AI</span>
+            <span class="tag">Looker</span>
+            <span class="tag">Amplitude</span>
+            <span class="tag">SQL</span>
+            <span class="tag">A/B Testing</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label reveal">Experience</p>
+      <div class="experience-list">
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-title">Forward Deployed PM / AI Content Engineer</span>
+            <span class="exp-meta">Apr 2025 – Present</span>
+          </div>
+          <p class="exp-company">Rely Health &nbsp;·&nbsp; Chicago, IL</p>
+          <ul class="exp-bullets">
+            <li>Designed and shipped 4 bilingual conversational AI systems processing thousands of daily interactions: after-hours triage with 9-category urgency assessment and warm transfer; multi-department phone tree with fuzzy name matching (30+ phonetic variations); outbound appointment confirmation with barrier identification; regional receptionist with emergency detection.</li>
+            <li>Architected multi-agent flows with 15+ routing nodes, 25+ edge conditions, and graceful fallback hierarchies; built automated testing framework with 75+ simulation test cases.</li>
+            <li>Improved conversion rate 28% (17%→45%) through conversation optimization and prompt tuning; reduced resolution time from 8.2 to 4.7 min, saving $140K annually.</li>
+            <li>Implemented RAG pipeline, improving response relevance 42% and reducing escalations 30%.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-title">Product Manager, Generative AI</span>
+            <span class="exp-meta">Mar 2024 – Mar 2025</span>
+          </div>
+          <p class="exp-company">Augmedix &nbsp;·&nbsp; San Francisco, CA</p>
+          <ul class="exp-bullets">
+            <li>Delivered AI documentation solution for $300M client, reducing physician documentation time 33% (2.1→1.4 hrs/shift), processing 10K+ monthly encounters.</li>
+            <li>Achieved 93% accuracy (F1 score) in clinical note generation via multi-stage GPT-4 prompting with RAG and few-shot learning.</li>
+            <li>Increased physician satisfaction 25% (3.2→4.0/5) through feedback cycles with 100+ clinicians.</li>
+            <li>Led cross-functional team of 6 to ship 2 weeks ahead of deadline; owned strategy, roadmap, prompt engineering, and deployment.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-title">Lead Product Manager, Voice AI</span>
+            <span class="exp-meta">Aug 2022 – Jun 2023</span>
+          </div>
+          <p class="exp-company">Volley Inc. &nbsp;·&nbsp; San Francisco, CA</p>
+          <ul class="exp-bullets">
+            <li>Grew weekly retention from 0.3% to 2.5% (733% increase) by redesigning onboarding for Alexa voice games (500K MAU).</li>
+            <li>Decreased session abandonment from 68% to 41% via progressive difficulty algorithms and feedback loops.</li>
+            <li>Reduced voice recognition errors 37% through conversation design and ASR optimization.</li>
+            <li>Increased feature adoption 45%, leading conversation design for 12 voice-first micro-interactions.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-header">
+            <span class="exp-title">Senior Product Manager, B2B Platforms</span>
+            <span class="exp-meta">Dec 2018 – Sep 2022</span>
+          </div>
+          <p class="exp-company">Sony Music Entertainment &nbsp;·&nbsp; New York, NY</p>
+          <ul class="exp-bullets">
+            <li>Scaled B2B platform to 2,000+ users enabling $50M+ annual licensing revenue tracking.</li>
+            <li>Built analytics dashboard processing 2M+ monthly transactions, informing $20M+ strategic decisions.</li>
+            <li>Delivered 100% on-time releases over 18 months tied to contractual deadlines.</li>
+            <li>Owned product strategy and roadmap for business-critical platform.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label reveal">Education</p>
+      <div class="education-list reveal">
+        <div class="education-row">
+          <span class="edu-degree">Master's in Linguistics</span>
+        </div>
+        <div class="education-row">
+          <span class="edu-degree">Bachelor's in Marketing &amp; Operations</span>
+        </div>
+        <div class="education-row">
+          <span class="edu-degree">Certificate in Marketing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMMENDATIONS -->
+  <section id="recommendations">
+    <div class="container">
+      <p class="section-label reveal">Recommendations</p>
+      <div class="rec-grid">
+
+        <div class="rec-card reveal">
+          <p class="rec-text">I've worked closely with Anna Maro at Rely Health, and she's one of the highest-ownership, hardest-working people I've had on a team. She brings real passion and care to the work — she's relentless about getting the details right, and she genuinely cares about teammates and outcomes (you feel it day to day). Anna is also excellent at Agile/Scrum execution: she creates clarity, keeps cross-functional work moving, drives decisions, and closes loops without letting things drift. I've personally appreciated how much she's supported me and the team, especially in high-pressure moments. Any org would be lucky to have her.</p>
+          <div class="rec-author">
+            <span class="rec-name">Prithvi Narasimhan</span>
+            <span class="rec-role">Co-Founder &nbsp;·&nbsp; Rely Health</span>
+          </div>
+        </div>
+
+        <div class="rec-card reveal">
+          <p class="rec-text">I had the privilege of working alongside Anna at Augmedix, where she served as the Product Manager and Scrum Lead for our Machine Learning engineering team. Anna consistently demonstrated exceptional communication skills, effectively articulating business requirements and supporting user ticket resolutions. Her ability to drive critical features to completion with remarkable efficiency was a significant asset to our projects. Additionally, Anna fostered a positive and engaging team environment, which greatly enhanced our remote work experience. I highly recommend her for any future endeavors.</p>
+          <div class="rec-author">
+            <span class="rec-name">Tim Kao</span>
+            <span class="rec-role">Senior AI Engineer &nbsp;·&nbsp; Reforge</span>
+          </div>
+        </div>
+
+        <div class="rec-card reveal">
+          <p class="rec-text">Anna is one of the best PMs I've ever worked with. As a PM new to Volley, she was tasked with improving the profitability and conversion for a game which historically underperformed in these metrics. Through Anna's leadership, cross-functional collaboration, and UX focus, her team met its KPIs using the agile framework she implemented.</p>
+          <div class="rec-author">
+            <span class="rec-name">Mary Wright</span>
+            <span class="rec-role">Senior Conversation Designer</span>
+          </div>
+        </div>
+
+        <div class="rec-card reveal">
+          <p class="rec-text">I worked with Anna for some time at Volley, and I can honestly say she's one of the best people I've ever worked with. She was always a pleasure to interact with, and always knew what was needed and when to get things done. If I wasn't sure how best to prioritize work for the many experiments she somehow managed to juggle, Anna provided helpful guidance and support. She was also very attuned to the fact that our hypotheses are not always right, and leaned heavily into ensuring that we followed the data and evolved our priorities as new insights were gleaned. Anna is proactive, incredibly intelligent, and always brought new and exciting ideas to the table. I absolutely loved working with her, and I'd work with her again in a heartbeat if given the chance!</p>
+          <div class="rec-author">
+            <span class="rec-name">Maya Tobi</span>
+            <span class="rec-role">Content Producer &amp; Narrative Designer &nbsp;·&nbsp; Ex-Volley, Meta &amp; Samsung</span>
+          </div>
+        </div>
+
+        <div class="rec-card reveal">
+          <p class="rec-text">Anna was an excellent part of the Product team, constantly running experiments and looking for improvements. She worked closely with her team and regularly hit KPIs on a major product played by tens of thousands of people every day. And in general Anna was a friendly and pleasant person to be around.</p>
+          <div class="rec-author">
+            <span class="rec-name">Danny Johnson</span>
+            <span class="rec-role">Game Designer &nbsp;·&nbsp; Volley</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Anna Maro &nbsp;·&nbsp; AI Product Manager &nbsp;·&nbsp; anna.maro.dm@gmail.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
