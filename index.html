@@ -1,485 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anna Maro — AI Product Manager</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f7f5f1;
-      --ink: #1a1814;
-      --muted: #7a7570;
-      --accent: #2d5a3d;
-      --accent-light: #e8efe9;
-      --rule: #d8d4ce;
-      --card: #ffffff;
-      --font: 'DM Sans', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Maro — AI Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F4;
+    --paper-raised:#FFFFFF;
+    --ink:#1A1D24;
+    --slate:#666E7B;
+    --line:#DDD7C9;
+    --blue:#2C4A6E;
+    --blue-soft:#EAF0F5;
+    --teal:#3F6259;
+    --teal-soft:#EAF1EE;
+    --max:840px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--blue);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+  h1,h2,h3{
+    font-family:'Space Grotesk', system-ui, sans-serif;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ---------- header ---------- */
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero h1{
+    font-size:clamp(2rem, 5vw, 2.6rem);
+    font-weight:700;
+  }
+  header.hero .role{
+    margin-top:6px;
+    font-size:1.02rem;
+    color:var(--slate);
+  }
+  .contact-line{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--slate);
+  }
+  .contact-line a{color:var(--slate); text-decoration:none; border-bottom:1px solid var(--line); margin-right:18px;}
+  .contact-line a:hover{color:var(--blue); border-color:var(--blue);}
 
-    html { scroll-behavior: smooth; }
+  /* ---------- route / node structure ---------- */
+  main{
+    position:relative;
+  }
+  .route{
+    display:grid;
+    grid-template-columns:24px 1fr;
+    column-gap:20px;
+  }
+  .route-rail{
+    position:relative;
+  }
+  .route-rail::before{
+    content:"";
+    position:absolute;
+    left:11px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .node-dot{
+    position:absolute;
+    left:6px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--blue);
+  }
+  section{
+    padding:44px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  section > .eyebrow{display:block; margin-bottom:14px;}
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font);
-      font-weight: 300;
-      line-height: 1.7;
-      font-size: 16px;
-    }
+  /* ---------- recommendations ---------- */
+  .quote-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:6px;
+  }
+  .quote-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:20px 22px;
+  }
+  .quote-card p{
+    margin:0 0 12px;
+    font-size:0.95rem;
+  }
+  .quote-card .attr{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--slate);
+  }
+  .quote-card .attr strong{color:var(--ink); font-weight:500;}
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
+  /* ---------- summary ---------- */
+  .summary p{font-size:1.02rem; max-width:66ch;}
+  .principles{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:22px;
+  }
+  .principle{
+    border-left:2px solid var(--teal);
+    padding:2px 0 2px 14px;
+  }
+  .principle h3{font-size:0.95rem; font-weight:600; margin-bottom:4px;}
+  .principle p{margin:0; font-size:0.88rem; color:var(--slate);}
 
-    section { padding: 60px 0; border-top: 1px solid var(--rule); }
+  /* ---------- featured build ---------- */
+  .build-card{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:6px;
+    padding:32px;
+  }
+  .build-card .eyebrow{color:#9FC1DE;}
+  .build-card h3{
+    color:#fff;
+    font-size:1.4rem;
+    margin:8px 0 12px;
+  }
+  .build-card p{
+    color:#C9CDD6;
+    max-width:56ch;
+    margin:0 0 20px;
+  }
+  .build-card .cta{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--ink);
+    background:#fff;
+    padding:9px 18px;
+    border-radius:3px;
+    text-decoration:none;
+  }
+  .build-card .cta:hover{background:#EAF0F5;}
+  .build-tags{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .build-tags span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:#C9CDD6;
+    border:1px solid #3A3F4B;
+    border-radius:3px;
+    padding:3px 8px;
+  }
+  .build-card.compact{padding:22px 24px; margin-top:16px;}
+  .build-card.compact h3{font-size:1.1rem; margin:6px 0 10px;}
+  .build-card.compact p{font-size:0.88rem; margin-bottom:14px;}
 
-    header { padding: 72px 0 56px; }
+  /* ---------- tags (technical expertise) ---------- */
+  .tag-group{margin-top:18px;}
+  .tag-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--slate);
+    font-weight:500;
+    margin-bottom:10px;
+  }
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tags span{
+    font-size:0.85rem;
+    background:var(--blue-soft);
+    color:var(--blue);
+    padding:5px 11px;
+    border-radius:3px;
+  }
 
-    .header-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.1s;
-    }
+  /* ---------- experience ---------- */
+  .job{margin-bottom:34px;}
+  .job:last-child{margin-bottom:0;}
+  .job-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:4px 16px;
+  }
+  .job-head h3{font-size:1.08rem; font-weight:600;}
+  .job-dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+  .job-company{
+    font-size:0.9rem;
+    color:var(--teal);
+    margin-top:2px;
+    font-weight:500;
+  }
+  .job ul{
+    margin:12px 0 0;
+    padding-left:18px;
+  }
+  .job li{
+    font-size:0.94rem;
+    margin-bottom:8px;
+    color:#333743;
+  }
+  .job li::marker{color:var(--line);}
 
-    h1 {
-      font-family: var(--font);
-      font-weight: 300;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.2s;
-      white-space: nowrap;
-    }
+  /* ---------- education ---------- */
+  .edu-item{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:0.94rem;
+  }
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item span{color:var(--slate); font-family:'IBM Plex Mono', monospace; font-size:0.8rem;}
 
-    .contact-bar {
-      margin-top: 32px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 28px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.4s;
-    }
+  /* ---------- footer ---------- */
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+  }
+  footer .name{
+    font-family:'Space Grotesk', system-ui, sans-serif;
+    font-weight:600;
+    font-size:1rem;
+  }
+  footer .role{color:var(--slate); font-size:0.85rem; margin-top:4px;}
+  footer a{
+    display:inline-block;
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--blue);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
 
-    .contact-bar a {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      letter-spacing: 0.03em;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
+  @media (max-width: 640px){
+    .quote-grid, .principles{grid-template-columns:1fr;}
+    .route{grid-template-columns:16px 1fr; column-gap:14px;}
+    .route-rail::before{left:7px;}
+    .node-dot{left:2px; width:9px; height:9px;}
+    section{padding:34px 0;}
+    .build-card{padding:24px;}
+  }
 
-    .contact-bar a:hover { color: var(--accent); border-color: var(--accent); }
-
-    .contact-bar .icon { width: 14px; height: 14px; opacity: 0.45; flex-shrink: 0; }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
-
-    .summary-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--ink);
-      max-width: 800px;
-      margin-bottom: 40px;
-    }
-
-    .competencies {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-
-    .competency { background: var(--bg); padding: 24px 22px; }
-
-    .competency h4 {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .competency p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-
-    .skill-group h4 {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .tag {
-      font-size: 12px;
-      padding: 4px 12px;
-      border: 1px solid var(--rule);
-      color: var(--ink);
-      background: var(--card);
-      letter-spacing: 0.02em;
-      font-weight: 300;
-    }
-
-    .experience-list { display: flex; flex-direction: column; gap: 48px; }
-
-    .exp-header { margin-bottom: 4px; }
-
-    .exp-title { font-size: 17px; font-weight: 500; color: var(--ink); display: block; margin-bottom: 4px; }
-
-    .exp-meta { font-size: 12px; color: var(--muted); letter-spacing: 0.03em; font-weight: 300; }
-
-    .exp-company {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      font-weight: 400;
-    }
-
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-
-    .exp-bullets li {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.65;
-      padding-left: 18px;
-      position: relative;
-      font-weight: 300;
-    }
-
-    .exp-bullets li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--rule);
-      font-size: 12px;
-      top: 2px;
-    }
-
-    .education-list { display: flex; flex-direction: column; gap: 14px; }
-
-    .edu-degree { font-size: 16px; font-weight: 300; color: var(--ink); }
-
-    .rec-grid { display: flex; flex-direction: column; gap: 24px; }
-
-    .rec-card {
-      background: var(--card);
-      border: 1px solid var(--rule);
-      padding: 32px 36px;
-      position: relative;
-    }
-
-    .rec-card::before {
-      content: '\201C';
-      font-family: var(--font);
-      font-size: 64px;
-      color: var(--accent-light);
-      position: absolute;
-      top: 8px;
-      left: 28px;
-      line-height: 1;
-      pointer-events: none;
-      font-weight: 600;
-    }
-
-    .rec-text {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--ink);
-      margin-bottom: 22px;
-      padding-top: 14px;
-    }
-
-    .rec-author {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      border-top: 1px solid var(--rule);
-      padding-top: 16px;
-    }
-
-    .rec-name { font-weight: 500; font-size: 13px; color: var(--ink); }
-
-    .rec-role { font-size: 12px; color: var(--muted); letter-spacing: 0.03em; font-weight: 300; }
-
-    footer { border-top: 1px solid var(--rule); padding: 36px 0; text-align: center; }
-
-    footer p { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; font-weight: 300; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 620px) {
-      .container { padding: 0 24px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .rec-card { padding: 24px 20px; }
-      h1 { white-space: normal; }
-    }
-  </style>
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important;}
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <p class="header-eyebrow">AI Product Manager &nbsp;·&nbsp; Systems Architecture &amp; Agentic Workflows at Scale</p>
-      <h1>Anna Maro</h1>
-      <div class="contact-bar">
-        <a href="mailto:anna.maro.dm@gmail.com">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-          anna.maro.dm@gmail.com
-        </a>
-        <a href="tel:+16282339072">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-          +1 (628) 233-9072
-        </a>
-        <a href="https://www.linkedin.com/in/annamaro/" target="_blank" rel="noopener">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          linkedin.com/in/annamaro
-        </a>
-      </div>
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">AI Product Manager · Systems Architecture &amp; Agentic Workflows at Scale</span>
+    <h1>Anna Maro</h1>
+    <div class="contact-line">
+      <a href="mailto:anna.maro.dm@gmail.com">anna.maro.dm@gmail.com</a>
+      <a href="tel:+16282339072">+1 (628) 233-9072</a>
+      <a href="https://www.linkedin.com/in/annamaro/" target="_blank" rel="noopener">linkedin.com/in/annamaro</a>
     </div>
   </header>
+</div>
 
-  <section id="summary">
-    <div class="container">
-      <p class="section-label reveal">Summary</p>
-      <p class="summary-text reveal">
-        AI Product Manager with 8+ years of experience building enterprise-ready systems and AI-powered information architecture at scale. Systems thinker with a track record of owning roadmaps across multiple engineering teams, partnering directly with customers to shape product decisions, and translating ambiguity into scalable primitives for organizations. Deep fluency in AI and agentic tooling — from architecting multi-agent routing infrastructure to deploying production LLM systems — paired with the speed and clarity needed to ship in fast-moving, ambiguous environments.
-      </p>
-      <div class="competencies reveal">
-        <div class="competency">
-          <h4>User-Focused</h4>
-          <p>Products are built for the user, not the demo. Every design decision is evaluated against real-world usage, not ideal conditions.</p>
-        </div>
-        <div class="competency">
-          <h4>Quality at Speed</h4>
-          <p>Iterative excellence: ship, measure, improve. The best product decisions come from what users do, not what they say in a meeting.</p>
-        </div>
-        <div class="competency">
-          <h4>Accessible by Design</h4>
-          <p>AI should feel effortless regardless of technical literacy. Complexity belongs under the hood, not in the user experience.</p>
-        </div>
-        <div class="competency">
-          <h4>Action-Oriented</h4>
-          <p>A systems thinker comfortable with ambiguity and pace — decisions are made with available information and refined through data, with urgency throughout.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<main class="wrap">
+  <div class="route">
+    <div class="route-rail"></div>
+    <div id="route-content">
 
-  <section id="skills">
-    <div class="container">
-      <p class="section-label reveal">Technical Expertise</p>
-      <div class="skills-grid reveal">
-        <div class="skill-group">
-          <h4>AI / ML</h4>
-          <div class="skill-tags">
-            <span class="tag">LLMs</span>
-            <span class="tag">Information Architecture</span>
-            <span class="tag">Systems Architecture</span>
-            <span class="tag">Prompt Engineering</span>
-            <span class="tag">RAG</span>
-            <span class="tag">Multi-Agent Systems</span>
-            <span class="tag">Model Evaluation</span>
-            <span class="tag">NLP</span>
+      <section id="recommendations">
+        <span class="eyebrow">Recommendations</span>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <p>"One of the highest-ownership, hardest-working people I've had on a team. She's relentless about getting the details right, and any org would be lucky to have her."</p>
+            <div class="attr"><strong>Prithvi Narasimhan</strong> · Co-Founder, Rely Health</div>
+          </div>
+          <div class="quote-card">
+            <p>"Consistently demonstrated exceptional communication skills. Her ability to drive critical features to completion with remarkable efficiency was a significant asset."</p>
+            <div class="attr"><strong>Tim Kao</strong> · Senior AI Engineer, Reforge</div>
+          </div>
+          <div class="quote-card">
+            <p>"One of the best PMs I've ever worked with. Through her leadership and UX focus, her team met its KPIs using the agile framework she implemented."</p>
+            <div class="attr"><strong>Mary Wright</strong> · Senior Conversation Designer</div>
+          </div>
+          <div class="quote-card">
+            <p>"Proactive, incredibly intelligent, and always brought new and exciting ideas to the table. I'd work with her again in a heartbeat."</p>
+            <div class="attr"><strong>Maya Tobi</strong> · Content Producer &amp; Narrative Designer, Ex-Volley, Meta &amp; Samsung</div>
           </div>
         </div>
-        <div class="skill-group">
-          <h4>Tools &amp; Platforms</h4>
-          <div class="skill-tags">
-            <span class="tag">Linear</span>
-            <span class="tag">Jira</span>
-            <span class="tag">Figma</span>
-            <span class="tag">Vellum</span>
-            <span class="tag">Retool AI</span>
-            <span class="tag">Looker</span>
-            <span class="tag">Amplitude</span>
-            <span class="tag">SQL</span>
-            <span class="tag">A/B Testing</span>
-            <span class="tag">Tableau</span>
+      </section>
+
+      <section id="summary" class="summary">
+        <span class="eyebrow">Summary</span>
+        <p>AI Product Manager with 8+ years of experience building enterprise-ready systems and AI-powered information architecture at scale. Systems thinker with a track record of owning roadmaps across multiple engineering teams, partnering directly with customers to shape product decisions, and translating ambiguity into scalable primitives for organizations. Deep fluency in AI and agentic tooling, from architecting multi-agent routing infrastructure to deploying production LLM systems, paired with the speed and clarity needed to ship in fast-moving, ambiguous environments.</p>
+        <div class="principles">
+          <div class="principle">
+            <h3>User-Focused</h3>
+            <p>Products are built for the user, not the demo. Every decision is evaluated against real-world usage.</p>
+          </div>
+          <div class="principle">
+            <h3>Quality at Speed</h3>
+            <p>Ship, measure, improve. Product decisions come from what users do, not what they say in a meeting.</p>
+          </div>
+          <div class="principle">
+            <h3>Accessible by Design</h3>
+            <p>AI should feel effortless regardless of technical literacy. Complexity belongs under the hood.</p>
+          </div>
+          <div class="principle">
+            <h3>Action-Oriented</h3>
+            <p>Comfortable with ambiguity and pace. Decisions get made with available information, then refined.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="experience">
-    <div class="container">
-      <p class="section-label reveal">Experience</p>
-      <div class="experience-list">
-
-        <div class="exp-item reveal">
-          <div class="exp-header">
-            <span class="exp-title">Lead Product Manager</span>
-            <span class="exp-meta">Rely Health &nbsp;·&nbsp; Chicago, IL &nbsp;·&nbsp; Apr 2025 – Present</span>
+      <section id="featured-build">
+        <span class="eyebrow">Featured Build</span>
+        <div class="build-card">
+          <span class="eyebrow">Live product · Solo build</span>
+          <h3>Venus Match</h3>
+          <p>A fully client-side, privacy-first compatibility calculator I designed and built end-to-end. Nothing entered is stored or transmitted, every calculation runs in the browser. Built to prove out an idea from concept through a working, shipped product outside my day job.</p>
+          <a class="cta" href="https://fresa-fresita.github.io/venus-match/" target="_blank" rel="noopener">View live →</a>
+          <div class="build-tags">
+            <span>Concept → Ship</span>
+            <span>Privacy-first architecture</span>
+            <span>Solo end-to-end build</span>
           </div>
-          <ul class="exp-bullets">
+        </div>
+      </section>
+
+      <section id="expertise">
+        <span class="eyebrow">Technical Expertise</span>
+        <div class="tag-group">
+          <h3>AI / ML</h3>
+          <div class="tags">
+            <span>LLMs</span><span>Information Architecture</span><span>Systems Architecture</span>
+            <span>Prompt Engineering</span><span>RAG</span><span>Multi-Agent Systems</span>
+            <span>Model Evaluation</span><span>NLP</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="tags">
+            <span>Linear</span><span>Jira</span><span>Figma</span><span>Vellum</span>
+            <span>Retool AI</span><span>Looker</span><span>Amplitude</span><span>SQL</span>
+            <span>A/B Testing</span><span>Tableau</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <span class="eyebrow">Experience</span>
+
+        <div class="job">
+          <div class="job-head">
+            <h3>Lead Product Manager</h3>
+            <span class="job-dates">Apr 2025 – Present</span>
+          </div>
+          <div class="job-company">Rely Health · Chicago, IL</div>
+          <ul>
             <li>Designed the information architecture and rollout for 4 AI agent systems deployed across departments, processing thousands of daily interactions: after-hours triage with 9-category urgency assessment and warm transfer; multi-department routing with fuzzy name matching (30+ phonetic variations); outbound appointment confirmation with barrier identification; regional receptionist with emergency detection.</li>
             <li>Architected the underlying system structure for multi-agent flows with 15+ routing nodes, 25+ edge conditions, and graceful fallback hierarchies; built an automated testing framework with 75+ simulation test cases to validate system integrity at scale.</li>
-            <li>Drove a 28% lift in conversion (17%→45%) and cut resolution time from 8.2 to 4.7 min, saving $140K annually, through systematic iteration and rapid prompt tuning.</li>
+            <li>Drove a 28% lift in conversion (17% → 45%) and cut resolution time from 8.2 to 4.7 min, saving $140K annually, through systematic iteration and rapid prompt tuning.</li>
             <li>Implemented a RAG pipeline as a shared knowledge layer across agents, improving response relevance 42% and reducing escalations 30%.</li>
           </ul>
         </div>
 
-        <div class="exp-item reveal">
-          <div class="exp-header">
-            <span class="exp-title">Senior Product Manager</span>
-            <span class="exp-meta">Augmedix &nbsp;·&nbsp; San Francisco, CA &nbsp;·&nbsp; Mar 2024 – Mar 2025</span>
+        <div class="job">
+          <div class="job-head">
+            <h3>Senior Product Manager</h3>
+            <span class="job-dates">Mar 2024 – Mar 2025</span>
           </div>
-          <ul class="exp-bullets">
+          <div class="job-company">Augmedix · San Francisco, CA</div>
+          <ul>
             <li>Owned the roadmap and led a cross-functional team of 6 (design, engineering, clinical ops) to deliver an enterprise AI documentation system for a $300M client 2 weeks ahead of deadline, processing 10K+ monthly encounters.</li>
-            <li>Reduced physician documentation time 33% (2.1→1.4 hrs/shift) via multi-stage GPT-4 prompting with RAG and few-shot learning, achieving 93% accuracy (F1 score) in clinical note generation.</li>
-            <li>Acted as the internal voice of the customer: partnered directly with 100+ clinicians through structured feedback cycles to surface pain points and shape the product roadmap, lifting satisfaction 25% (3.2→4.0/5).</li>
+            <li>Reduced physician documentation time 33% (2.1 → 1.4 hrs/shift) via multi-stage GPT-4 prompting with RAG and few-shot learning, achieving 93% accuracy (F1 score) in clinical note generation.</li>
+            <li>Acted as the internal voice of the customer: partnered directly with 100+ clinicians through structured feedback cycles to surface pain points and shape the product roadmap, lifting satisfaction 25% (3.2 → 4.0/5).</li>
           </ul>
         </div>
 
-        <div class="exp-item reveal">
-          <div class="exp-header">
-            <span class="exp-title">Lead Product Manager</span>
-            <span class="exp-meta">Volley Inc. &nbsp;·&nbsp; San Francisco, CA &nbsp;·&nbsp; Aug 2022 – Jun 2023</span>
+        <div class="job">
+          <div class="job-head">
+            <h3>Lead Product Manager</h3>
+            <span class="job-dates">Aug 2022 – Jun 2023</span>
           </div>
-          <ul class="exp-bullets">
+          <div class="job-company">Volley Inc. · San Francisco, CA</div>
+          <ul>
             <li>Grew weekly retention from 0.3% to 2.5% (733% increase) by redesigning onboarding for Alexa voice games (500K MAU); decreased session abandonment from 68% to 41% via progressive difficulty algorithms and feedback loops.</li>
             <li>Reduced voice recognition errors 37% through conversation design and ASR optimization.</li>
             <li>Increased feature adoption 45% across 12 voice-first micro-interactions through iterative, data-driven design.</li>
           </ul>
         </div>
 
-        <div class="exp-item reveal">
-          <div class="exp-header">
-            <span class="exp-title">Senior Product Manager</span>
-            <span class="exp-meta">Sony Music Entertainment &nbsp;·&nbsp; New York, NY &nbsp;·&nbsp; Dec 2019 – Sep 2022</span>
+        <div class="job">
+          <div class="job-head">
+            <h3>Senior Product Manager</h3>
+            <span class="job-dates">Dec 2019 – Sep 2022</span>
           </div>
-          <ul class="exp-bullets">
+          <div class="job-company">Sony Music Entertainment · New York, NY</div>
+          <ul>
             <li>Owned product strategy and roadmap for a business-critical B2B system of record, scaling the platform to 2,000+ users and enabling $50M+ in annual licensing revenue tracking.</li>
             <li>Built an analytics dashboard processing 2M+ monthly transactions, informing $20M+ in strategic decisions; delivered 100% on-time releases over 18 months against contractual deadlines.</li>
           </ul>
         </div>
 
-      </div>
+        <div class="job">
+          <div class="job-head">
+            <h3>Product Operations Lead</h3>
+            <span class="job-dates">Aug 2015 – Dec 2019</span>
+          </div>
+          <div class="job-company">Techery · Los Angeles, CA</div>
+          <ul>
+            <li>Managed a portfolio of 4 client accounts spanning web, mobile, B2B, B2C, hardware, and software, partnering directly with CEOs and CTOs to prioritize initiatives and align stakeholders around product vision and strategy.</li>
+            <li>Led hiring for key product and operations roles and directed the user research team to ensure a personalized, high-impact user experience across client products.</li>
+          </ul>
+          <div class="build-card compact">
+            <span class="eyebrow">Live product · Built at Techery</span>
+            <h3>AppSpector</h3>
+            <p>A mobile application, now also available on web, I worked on hands-on as Product Manager, partnering closely with a team of engineers from build through launch.</p>
+            <a class="cta" href="https://www.appspector.com/" target="_blank" rel="noopener">View live →</a>
+            <div class="build-tags">
+              <span>Product Manager</span><span>Mobile &amp; Web</span><span>Team build</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <span class="eyebrow">Education</span>
+        <div class="edu-item"><span>Master's in Linguistics</span></div>
+        <div class="edu-item"><span>Bachelor's in Marketing &amp; Operations</span></div>
+        <div class="edu-item"><span>Certificate in Marketing</span></div>
+      </section>
+
     </div>
-  </section>
+  </div>
+</main>
 
-  <section id="education">
-    <div class="container">
-      <p class="section-label reveal">Education</p>
-      <div class="education-list reveal">
-        <div><span class="edu-degree">Master's in Linguistics</span></div>
-        <div><span class="edu-degree">Bachelor's in Marketing &amp; Operations</span></div>
-        <div><span class="edu-degree">Certificate in Marketing</span></div>
-      </div>
-    </div>
-  </section>
+<footer class="wrap">
+  <div class="name">Anna Maro</div>
+  <div class="role">AI Product Manager</div>
+  <a href="mailto:anna.maro.dm@gmail.com">anna.maro.dm@gmail.com</a>
+</footer>
 
-  <section id="recommendations">
-    <div class="container">
-      <p class="section-label reveal">Recommendations</p>
-      <div class="rec-grid">
-
-        <div class="rec-card reveal">
-          <p class="rec-text">I've worked closely with Anna Maro at Rely Health, and she's one of the highest-ownership, hardest-working people I've had on a team. She brings real passion and care to the work — she's relentless about getting the details right, and she genuinely cares about teammates and outcomes (you feel it day to day). Anna is also excellent at Agile/Scrum execution: she creates clarity, keeps cross-functional work moving, drives decisions, and closes loops without letting things drift. I've personally appreciated how much she's supported me and the team, especially in high-pressure moments. Any org would be lucky to have her.</p>
-          <div class="rec-author">
-            <span class="rec-name">Prithvi Narasimhan</span>
-            <span class="rec-role">Co-Founder &nbsp;·&nbsp; Rely Health</span>
-          </div>
-        </div>
-
-        <div class="rec-card reveal">
-          <p class="rec-text">I had the privilege of working alongside Anna at Augmedix, where she served as the Product Manager and Scrum Lead for our Machine Learning engineering team. Anna consistently demonstrated exceptional communication skills, effectively articulating business requirements and supporting user ticket resolutions. Her ability to drive critical features to completion with remarkable efficiency was a significant asset to our projects. Additionally, Anna fostered a positive and engaging team environment, which greatly enhanced our remote work experience. I highly recommend her for any future endeavors.</p>
-          <div class="rec-author">
-            <span class="rec-name">Tim Kao</span>
-            <span class="rec-role">Senior AI Engineer &nbsp;·&nbsp; Reforge</span>
-          </div>
-        </div>
-
-        <div class="rec-card reveal">
-          <p class="rec-text">Anna is one of the best PMs I've ever worked with. As a PM new to Volley, she was tasked with improving the profitability and conversion for a game which historically underperformed in these metrics. Through Anna's leadership, cross-functional collaboration, and UX focus, her team met its KPIs using the agile framework she implemented.</p>
-          <div class="rec-author">
-            <span class="rec-name">Mary Wright</span>
-            <span class="rec-role">Senior Conversation Designer</span>
-          </div>
-        </div>
-
-        <div class="rec-card reveal">
-          <p class="rec-text">I worked with Anna for some time at Volley, and I can honestly say she's one of the best people I've ever worked with. She was always a pleasure to interact with, and always knew what was needed and when to get things done. If I wasn't sure how best to prioritize work for the many experiments she somehow managed to juggle, Anna provided helpful guidance and support. She was also very attuned to the fact that our hypotheses are not always right, and leaned heavily into ensuring that we followed the data and evolved our priorities as new insights were gleaned. Anna is proactive, incredibly intelligent, and always brought new and exciting ideas to the table. I absolutely loved working with her, and I'd work with her again in a heartbeat if given the chance!</p>
-          <div class="rec-author">
-            <span class="rec-name">Maya Tobi</span>
-            <span class="rec-role">Content Producer &amp; Narrative Designer &nbsp;·&nbsp; Ex-Volley, Meta &amp; Samsung</span>
-          </div>
-        </div>
-
-        <div class="rec-card reveal">
-          <p class="rec-text">Anna was an excellent part of the Product team, constantly running experiments and looking for improvements. She worked closely with her team and regularly hit KPIs on a major product played by tens of thousands of people every day. And in general Anna was a friendly and pleasant person to be around.</p>
-          <div class="rec-author">
-            <span class="rec-name">Danny Johnson</span>
-            <span class="rec-role">Game Designer &nbsp;·&nbsp; Volley</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>Anna Maro &nbsp;·&nbsp; AI Product Manager &nbsp;·&nbsp; anna.maro.dm@gmail.com</p>
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
 </body>
+<script>
+  function placeDots(){
+    var rail = document.querySelector('.route-rail');
+    var content = document.getElementById('route-content');
+    if(!rail || !content) return;
+    var old = rail.querySelectorAll('.node-dot');
+    for(var i=0;i<old.length;i++){ old[i].remove(); }
+    var sections = content.children;
+    for(var i=0;i<sections.length;i++){
+      var sec = sections[i];
+      var dot = document.createElement('span');
+      dot.className = 'node-dot';
+      dot.style.top = sec.offsetTop + 'px';
+      rail.appendChild(dot);
+    }
+  }
+  window.addEventListener('load', placeDots);
+  window.addEventListener('resize', placeDots);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(placeDots); }
+</script>
 </html>
