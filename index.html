@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anna Maro — AI Product Manager</title>
+<title>Anna Maro — Senior Product Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:var(--blue);}
+  p, li{text-align:justify; hyphens:none;}
   a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
   h1,h2,h3{
     font-family:'Space Grotesk', system-ui, sans-serif;
@@ -136,7 +137,7 @@
   .quote-card .attr strong{color:var(--ink); font-weight:500;}
 
   /* ---------- summary ---------- */
-  .summary p{font-size:1.02rem; max-width:66ch;}
+  .summary p{font-size:1.02rem; text-align:justify; hyphens:none;}
   .principles{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -165,7 +166,6 @@
   }
   .build-card p{
     color:#C9CDD6;
-    max-width:56ch;
     margin:0 0 20px;
   }
   .build-card .cta{
@@ -227,7 +227,7 @@
     flex-wrap:wrap;
     gap:4px 16px;
   }
-  .job-head h3{font-size:1.08rem; font-weight:600;}
+  .job-head h3{font-size:1.08rem; font-weight:700;}
   .job-dates{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.8rem;
@@ -236,10 +236,17 @@
   }
   .job-company{
     font-size:0.9rem;
-    color:var(--teal);
+    color:var(--ink);
     margin-top:2px;
-    font-weight:500;
+    font-weight:700;
   }
+  .job-links{
+    margin-top:2px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+  }
+  .job-links a{color:#0057FF; text-decoration:none; border-bottom:1px solid #0057FF; margin-right:14px;}
+  .job-links a:hover{color:#0040C0; border-color:#0040C0;}
   .job ul{
     margin:12px 0 0;
     padding-left:18px;
@@ -301,11 +308,12 @@
 
 <div class="wrap">
   <header class="hero">
-    <span class="eyebrow">AI Product Manager · Systems Architecture &amp; Agentic Workflows at Scale</span>
+    <span class="eyebrow">Senior Product Manager · Agentic Workflows, Conversational AI, B2B, B2C</span>
     <h1>Anna Maro</h1>
     <div class="contact-line">
+      <span style="margin-right:18px;">San Francisco, CA</span>
       <a href="mailto:anna.maro.dm@gmail.com">anna.maro.dm@gmail.com</a>
-      <a href="tel:+16282339072">+1 (628) 233-9072</a>
+      <a href="tel:+16282339072">1-628-233-9072</a>
       <a href="https://www.linkedin.com/in/annamaro/" target="_blank" rel="noopener">linkedin.com/in/annamaro</a>
     </div>
   </header>
@@ -340,7 +348,7 @@
 
       <section id="summary" class="summary">
         <span class="eyebrow">Summary</span>
-        <p>AI Product Manager with 8+ years of experience building enterprise-ready systems and AI-powered information architecture at scale. Systems thinker with a track record of owning roadmaps across multiple engineering teams, partnering directly with customers to shape product decisions, and translating ambiguity into scalable primitives for organizations. Deep fluency in AI and agentic tooling, from architecting multi-agent routing infrastructure to deploying production LLM systems, paired with the speed and clarity needed to ship in fast-moving, ambiguous environments.</p>
+        <p>Senior Product Manager with 8+ years of experience leading digital products from ideation through launch, across agentic workflows, conversational AI, enterprise software, and consumer platforms. Partners directly with CEOs and executive leadership to shape product strategy, drive the mission forward, and make high-stakes decisions in ambiguous, fast-moving environments, including helping scale a company from 15 to 350+ employees. Aligns globally distributed, multilingual teams of engineers, designers, and stakeholders around highly technical solutions, translating between business goals and engineering realities. Hands-on with the technology itself, from multi-agent architecture and RAG pipelines to prompt engineering and automated testing, with a consistent track record of shipping products that deliver measurable business results.</p>
         <div class="principles">
           <div class="principle">
             <h3>User-Focused</h3>
@@ -390,8 +398,9 @@
           <h3>Tools &amp; Platforms</h3>
           <div class="tags">
             <span>Linear</span><span>Jira</span><span>Figma</span><span>Vellum</span>
-            <span>Retool AI</span><span>Looker</span><span>Amplitude</span><span>SQL</span>
-            <span>A/B Testing</span><span>Tableau</span>
+            <span>Retell AI</span><span>Twilio</span><span>Kibana</span><span>Amplitude</span>
+            <span>A/B Testing Platforms</span><span>Tableau</span><span>Cursor</span><span>VS Code</span>
+            <span>GitHub Copilot</span><span>Claude</span><span>ChatGPT</span>
           </div>
         </div>
       </section>
@@ -401,14 +410,26 @@
 
         <div class="job">
           <div class="job-head">
-            <h3>Lead Product Manager</h3>
-            <span class="job-dates">Apr 2025 – Present</span>
+            <h3>Independent AI Product Manager</h3>
+            <span class="job-dates">May 2026 – Present</span>
           </div>
-          <div class="job-company">Rely Health · Chicago, IL</div>
+          <div class="job-company">Contract Work</div>
           <ul>
-            <li>Designed the information architecture and rollout for 4 AI agent systems deployed across departments, processing thousands of daily interactions: after-hours triage with 9-category urgency assessment and warm transfer; multi-department routing with fuzzy name matching (30+ phonetic variations); outbound appointment confirmation with barrier identification; regional receptionist with emergency detection.</li>
-            <li>Architected the underlying system structure for multi-agent flows with 15+ routing nodes, 25+ edge conditions, and graceful fallback hierarchies; built an automated testing framework with 75+ simulation test cases to validate system integrity at scale.</li>
-            <li>Drove a 28% lift in conversion (17% → 45%) and cut resolution time from 8.2 to 4.7 min, saving $140K annually, through systematic iteration and rapid prompt tuning.</li>
+            <li>Healthcare, Legal, Agentic AI</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <h3>Forward Deployed Product Manager</h3>
+            <span class="job-dates">Apr 2025 – Mar 2026</span>
+          </div>
+          <div class="job-company">Rely Health</div>
+          <div class="job-links"><a href="https://relyhealth.care/" target="_blank" rel="noopener">relyhealth.care</a></div>
+          <ul>
+            <li>Owned product strategy, roadmap, and requirements for 4 generative AI agent systems deployed across departments, processing thousands of daily consumer and patient interactions: after-hours triage with 9-category urgency assessment and warm transfer; multi-department routing with fuzzy name matching (30+ phonetic variations); outbound appointment confirmation with barrier identification; regional receptionist with emergency detection.</li>
+            <li>Owned the full arc from discovery to execution: architected the underlying system structure for multi-agent flows with 15+ routing nodes, 25+ edge conditions, and graceful fallback hierarchies; built an automated testing framework with 75+ simulation test cases to validate system integrity at scale.</li>
+            <li>Ran hypothesis-driven iteration and rapid prompt experimentation to improve conversion and cut resolution time from 8.2 to 4.7 min, saving $140K annually.</li>
             <li>Implemented a RAG pipeline as a shared knowledge layer across agents, improving response relevance 42% and reducing escalations 30%.</li>
           </ul>
         </div>
@@ -419,10 +440,11 @@
             <span class="job-dates">Mar 2024 – Mar 2025</span>
           </div>
           <div class="job-company">Augmedix · San Francisco, CA</div>
+          <div class="job-links"><a href="https://www.augmedix.com/product-overview" target="_blank" rel="noopener">augmedix.com/product-overview</a></div>
           <ul>
             <li>Owned the roadmap and led a cross-functional team of 6 (design, engineering, clinical ops) to deliver an enterprise AI documentation system for a $300M client 2 weeks ahead of deadline, processing 10K+ monthly encounters.</li>
-            <li>Reduced physician documentation time 33% (2.1 → 1.4 hrs/shift) via multi-stage GPT-4 prompting with RAG and few-shot learning, achieving 93% accuracy (F1 score) in clinical note generation.</li>
-            <li>Acted as the internal voice of the customer: partnered directly with 100+ clinicians through structured feedback cycles to surface pain points and shape the product roadmap, lifting satisfaction 25% (3.2 → 4.0/5).</li>
+            <li>Reduced physician documentation time 33% (2.1 to 1.4 hrs/shift) via multi-stage GPT-4 prompt engineering with RAG and few-shot learning, achieving 93% accuracy (F1 score) in clinical note generation.</li>
+            <li>Acted as the internal voice of the customer: ran structured customer and user research and feedback cycles with 100+ clinicians to surface pain points, form hypotheses, and shape the product roadmap, lifting satisfaction 25% (3.2 to 4.0/5).</li>
           </ul>
         </div>
 
@@ -431,11 +453,13 @@
             <h3>Lead Product Manager</h3>
             <span class="job-dates">Aug 2022 – Jun 2023</span>
           </div>
-          <div class="job-company">Volley Inc. · San Francisco, CA</div>
+          <div class="job-company">Volley Inc. (currently Weekend) · San Francisco, CA</div>
+          <div class="job-links"><a href="https://qotd-volley.webflow.io/" target="_blank" rel="noopener">qotd-volley.webflow.io</a></div>
           <ul>
-            <li>Grew weekly retention from 0.3% to 2.5% (733% increase) by redesigning onboarding for Alexa voice games (500K MAU); decreased session abandonment from 68% to 41% via progressive difficulty algorithms and feedback loops.</li>
-            <li>Reduced voice recognition errors 37% through conversation design and ASR optimization.</li>
-            <li>Increased feature adoption 45% across 12 voice-first micro-interactions through iterative, data-driven design.</li>
+            <li>Owned product strategy for a consumer-facing, voice-first mobile and smart-speaker experience (Alexa, 500K MAU), redesigning onboarding to drive lasting behavioral change in daily usage habits.</li>
+            <li>Ran iterative experiments on progressive difficulty algorithms and feedback loops, growing weekly retention from 0.3% to 2.5% (733% increase) and decreasing session abandonment from 68% to 41%.</li>
+            <li>Reduced voice recognition errors 37% through conversation design and ASR optimization, directly improving the consumer experience of interacting with the product day to day.</li>
+            <li>Increased feature adoption 45% across 12 voice-first micro-interactions through iterative, data-driven design and rapid hypothesis testing.</li>
           </ul>
         </div>
 
@@ -446,8 +470,7 @@
           </div>
           <div class="job-company">Sony Music Entertainment · New York, NY</div>
           <ul>
-            <li>Owned product strategy and roadmap for a business-critical B2B system of record, scaling the platform to 2,000+ users and enabling $50M+ in annual licensing revenue tracking.</li>
-            <li>Built an analytics dashboard processing 2M+ monthly transactions, informing $20M+ in strategic decisions; delivered 100% on-time releases over 18 months against contractual deadlines.</li>
+            <li>Owned the whole product process end to end as Product Manager, from ideation through execution to deployment. Led ideation sessions with leadership, owned the roadmap, backlog, and user stories in Jira, and drove architecture and UI/UX decisions alongside software architects and designers. Kept a globally distributed team aligned across engineering, design, and stakeholders, taking the product from beta to the successful launch of V1.</li>
           </ul>
         </div>
 
@@ -457,7 +480,10 @@
             <span class="job-dates">Aug 2015 – Dec 2019</span>
           </div>
           <div class="job-company">Techery · Los Angeles, CA</div>
+          <div class="job-links"><a href="https://www.appspector.com/" target="_blank" rel="noopener">appspector.com</a></div>
+          <div class="job-links"><a href="https://plexusworldwide.com/?culture=en-US" target="_blank" rel="noopener">plexusworldwide.com</a></div>
           <ul>
+            <li>Partnered directly with the CEO to scale the company from 15 to 350+ employees, building operational processes and leading hiring and interviewing across teams.</li>
             <li>Managed a portfolio of 4 client accounts spanning web, mobile, B2B, B2C, hardware, and software, partnering directly with CEOs and CTOs to prioritize initiatives and align stakeholders around product vision and strategy.</li>
             <li>Led hiring for key product and operations roles and directed the user research team to ensure a personalized, high-impact user experience across client products.</li>
           </ul>
@@ -471,13 +497,21 @@
             </div>
           </div>
         </div>
+      
+        <div class="job">
+          <div class="job-head">
+            <h3>Senior R&amp;D Project Manager</h3>
+            <span class="job-dates">Sep 2013 – Aug 2015</span>
+          </div>
+          <div class="job-company">Noosphere Venture Partners · Kyiv, Ukraine</div>
+        </div>
       </section>
 
       <section id="education">
         <span class="eyebrow">Education</span>
-        <div class="edu-item"><span>Master's in Linguistics</span></div>
-        <div class="edu-item"><span>Bachelor's in Marketing &amp; Operations</span></div>
-        <div class="edu-item"><span>Certificate in Marketing</span></div>
+        <div class="edu-item"><span>Master's in Linguistics | Dnipro National University, Ukraine</span></div>
+        <div class="edu-item"><span>Bachelor's in Marketing &amp; Operations | Alfred Nobel University, Ukraine</span></div>
+        <div class="edu-item"><span>Marketing | Golden Gate University, San Francisco</span></div>
       </section>
 
     </div>
@@ -486,7 +520,7 @@
 
 <footer class="wrap">
   <div class="name">Anna Maro</div>
-  <div class="role">AI Product Manager</div>
+  <div class="role">Senior Product Manager</div>
   <a href="mailto:anna.maro.dm@gmail.com">anna.maro.dm@gmail.com</a>
 </footer>
 
